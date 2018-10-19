@@ -37,9 +37,7 @@ class LoginController extends Controller
      * @return void
      */
 
-    public function login(Request $request){
-        //Por ahora no habrá autenticacion
-        
+    public function login(Request $request){        
         $employees = User::all()->where('code',$request->code);
         
         if($employees->isEmpty()){
@@ -50,7 +48,7 @@ class LoginController extends Controller
             if(Hash::check($request->password,$user->password)){
                 Auth::loginUsingId($user->id);
                 //Si ha entrado hasta aca es porqe es empleado , si no no llegaría hasta esta parte
-                    return redirect()->intended('/admin/index');
+                    return redirect()->intended('/admin/home');
                 
             }
         }

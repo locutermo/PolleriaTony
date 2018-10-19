@@ -26,9 +26,9 @@ class Route
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::User() == null){
-            return redirect()->guest('/');
-        }
+        // if(Auth::User() == null){
+        //     return redirect()->guest('/');
+        // }
 
         return $next($request);
     }

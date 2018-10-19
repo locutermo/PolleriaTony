@@ -1,10 +1,11 @@
 <?php
-	Route::get('/',function(){
+Route::middleware(['route','admin'])->group(function () {
+	Route::get('/', function () {
+		 return redirect('/index');
+	 });
+	Route::get('index', function(){
 		return view('admin.home');
-	});
+	  });
 
 
-	Route::get('/test', function () {
-		return view('test');
 });
-
