@@ -1,9 +1,10 @@
 <?php
-Route::middleware(['route','admin'])->group(function () {
-	Route::get('index', function(){
-	  return view('admin.home');
+	Route::get('/',function(){
+		return view('admin.home');
 	});
 
 
-
+	Route::get('/test', function () {
+		return view('test');
 });
+

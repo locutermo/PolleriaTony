@@ -13,13 +13,17 @@
 
 Route::get('/', function () {
    // return view('welcome');
-    return redirect('/admin/index');
+    return redirect('/login');
 
 });
-Route::get('/test', function () {
-     return view('test');
-     
- 
- });
+Auth::routes();
+Route::get('login', function(){
+    return view('auth.login');
+});
+
+Route::namespace('Auth')->group(function(){
+    Route::post('login', 'LoginController@login')->name('login');
+    Route::post('logout', 'LoginController@logout')->name('logout');
+});
 
 

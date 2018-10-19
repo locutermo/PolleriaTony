@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -32,8 +36,28 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+
+    public function login(Request $request){
+        //Por ahora no habrá autenticacion
+        echo "hola mund";
+        $employees = User::all()->where('code',$request->code);
+        
+        if($employees->isEmpty()){
+                echo "<strong>TEMPORAL</strong>";
+                echo "<br>No existe un usuario con tal email o codigo";
+        }else{
+            $user = $employees->first();
+            if(Hash::check($request->password,$user->password)){
+                Auth::loginUsingId($user->id);
+                //Si ha entrado hasta aca es porqe es empleado , si no no llegaría hasta esta parte
+                    return redirect()->intended('/admin/index');
+                
+            }
+        }
+        
+    }
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect()->intended('/');
     }
 }

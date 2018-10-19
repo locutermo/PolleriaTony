@@ -16,7 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'code',
+        'password',
+        'type',
     ];
 
     /**
@@ -27,4 +30,23 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getType(){
+        
+          switch ($this->type) {
+            case 1:
+              return "Jefe de Area";
+              break;
+              case 2:
+                return "Mozo";
+                break;
+                case 3:
+                  return "Cocinero";
+                  break;
+            default:
+              // code...
+              break;
+          }
+      }
+
 }
