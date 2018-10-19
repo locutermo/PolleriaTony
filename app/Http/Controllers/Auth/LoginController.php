@@ -39,7 +39,7 @@ class LoginController extends Controller
 
     public function login(Request $request){
         //Por ahora no habrá autenticacion
-        echo "hola mund";
+        
         $employees = User::all()->where('code',$request->code);
         
         if($employees->isEmpty()){
