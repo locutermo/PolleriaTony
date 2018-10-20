@@ -16,6 +16,12 @@ Route::get('/', function () {
     return redirect('/login');
 
 });
+Route::get('/test', function () {
+    // return view('welcome');
+    return view('test');
+ 
+ });
+
 Auth::routes();
 Route::get('login', function(){
     return view('auth.login');
