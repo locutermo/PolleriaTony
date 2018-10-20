@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Route::get('/test', function () {
     // return view('welcome');
-    return view('test');
+    return view('material-d.index');
  
  });
 
