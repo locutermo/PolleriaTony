@@ -7,6 +7,6 @@
     <title>PROBANDO</title>
 </head>
 <body>
-    <h1>ESTO ES UNA PRUEBA DE QUE SE HA SUBIDO CORRECTAMENTE EL PROYECTO</h1>
+    <h1>BENJAMIN EL MÁS PRO</h1>
 </body>
 </html>
