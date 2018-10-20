@@ -38,6 +38,9 @@ class LoginController extends Controller
      */
 
     public function login(Request $request){        
+        return redirect()->intended('/admin');
+        //Esto se activará cuando se quiera validar, será al final 
+        //cuando se pongan los middleware
         $employees = User::all()->where('code',$request->code);
         
         if($employees->isEmpty()){
@@ -48,7 +51,7 @@ class LoginController extends Controller
             if(Hash::check($request->password,$user->password)){
                 Auth::loginUsingId($user->id);
                 //Si ha entrado hasta aca es porqe es empleado , si no no llegaría hasta esta parte
-                    return redirect()->intended('/admin/home');
+                    return redirect()->intended('/admin');
                 
             }
         }

@@ -15,7 +15,7 @@
     <!-- Theme style -->
     <link href="{{ asset('css/AdminLTE.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/skins/_all-skins.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('bower_components/select2/dis/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bower_components/jvectormap/jquery-jvectormap.css') }}" rel="stylesheet">
     <!-- Boostrap-->
     <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -115,6 +115,7 @@
    {{-- Scripts  --}}
    <script type="text/javascript" src="{{ asset('js/admin/main.js') }}"></script>
 
+   <script src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
 
     
 </body>
