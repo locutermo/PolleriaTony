@@ -5,10 +5,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="{{ asset('img/jose.jpg') }}" class="img-circle" alt="User Image">
+            <img src="{{ asset('img/avatar.png') }}" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Jose Mateo Carrasco</p>
+            <p>{{Auth::User()->name}}</p>
             <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
           </div>
         </div>
@@ -27,7 +27,8 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU NAVEGACIÓN</li>
           <li>
-              <a href="http://polleriatony.herokuapp.com/admin/index">
+              {{-- <a href="http://polleriatony.herokuapp.com/admin/index"> --}}
+                <a href="#">
                 <i class="fa fa-th"></i> <span>Inicio</span>
                 {{-- <span class="pull-right-container">
                   <small class="label pull-right bg-green">new</small>
