@@ -33,6 +33,14 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'type'=> 2,
         ]);
+        User::create([
+            'id'=>4,
+            'name' => 'Anonimo',
+            'code' => 'admin@admin.com',
+            'password' => bcrypt('admin'),
+            'type'=> 4,
+        ]);
+
 
     }
 }

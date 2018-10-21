@@ -38,7 +38,6 @@ class LoginController extends Controller
      */
 
     public function login(Request $request){        
-        return redirect()->intended('/admin');
         //Esto se activará cuando se quiera validar, será al final 
         //cuando se pongan los middleware
         $employees = User::all()->where('code',$request->code);

@@ -17,10 +17,10 @@ class Admin
 
     public function handle($request, Closure $next)
     {   
-        // if(Auth::User()->type > 3){
-        //     Auth::logout();
-        //     return redirect('/');
-        // }
+        if(Auth::User()->type > 4){
+            Auth::logout();
+            return redirect('/');
+        }
 
 
         return $next($request);

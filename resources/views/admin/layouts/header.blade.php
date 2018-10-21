@@ -20,15 +20,15 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   {{-- <img src="{{ asset('img/.jpg') }}" class="img-circle" alt="User Image">             --}}
-                      <span class="hidden-xs">Jose Mateo Carrasco</span>
+                  <span class="hidden-xs">{{Auth::User()->name}}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                     <img src="{{ asset('img/jose.jpg') }}" class="img-circle" alt="User Image">  
                   <p>
-                    Jose Mateo Carrasco - Desarrollador web
-                    <small>Miembro desde Oct. 2018</small>
+                    {{Auth::User()->name}} - {{Auth::User()->getType()}}
+                    <small>Miembro desde {{Auth::User()->created_at}}</small>
                   </p>
                 </li>
                 <!-- Menu Body -->
