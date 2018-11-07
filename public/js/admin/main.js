@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    initDropify();
 
     instansDT($('.datatable'));
     initSelect();
@@ -10,6 +11,17 @@ function initSelect(){
     $(".select2").select2();
    
 }
+
+function initDropify(){
+    $('.dropify').dropify({
+      messages: {
+          'default': 'Arrastra y suelta una foto o haz click aqui',
+          'replace': 'Arrastra y suelta o haz click para cambiar de foto',
+          'remove':  'Remover',
+          'error':   'Ooops, algo ha ocurrido :(.'
+      }
+  });
+  }
 
 function instansDT(element){
     element.DataTable({

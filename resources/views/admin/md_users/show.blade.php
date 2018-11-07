@@ -26,8 +26,8 @@
 				<td>{{$user->email}}</td>
 				<td>{{$user->cellphone}}</td>
 				<td class="text-center">
-						<button type="button"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editUser" data-id="1" ><i class="fa fa-pencil"></i></button>
-						<button type="button"   class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteUser" data-id="1" ><i class="fa fa-trash"></i></button>
+				<button type="button"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editUser" data-id="{{$user->id}}" ><i class="fa fa-pencil"></i></button>
+						<button type="button"   class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteUser" data-id="{{$user->id}}" ><i class="fa fa-trash"></i></button>
 		
 					</td>
 			</tr>

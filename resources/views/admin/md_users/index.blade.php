@@ -20,7 +20,7 @@
                 {!! $show !!}
             </div>
             <div class="col-md-1">
-                    <input type="hidden" id="tokenUser" value="{{csrf_token()}}">
+                    <input type="hidden" id="token" value="{{csrf_token()}}">
                           <div class="row">
                               <div class="col-md-12">
                                 {!! $new !!}

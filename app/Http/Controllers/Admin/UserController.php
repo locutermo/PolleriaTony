@@ -63,49 +63,25 @@ class UserController extends Controller
       $state = -1;
 
 
-        //Registrar el usuario
-        if ($request->userType_id == 2) {
-          $state = 3;
-        }else{
-          $state = 0 ;
-        }
-
+  
         //Obteniendo imagen 
-        
+        // $urlImgName = ($request->file('urlImg')!=null)?time().$request->file('urlImg')->getClientOriginalName():null;
+
         $user = User::create([
           'name' => $request->name,
-          'lastName' => $request->lastName,
+          'lastname' => $request->lastName,
           'dni' => $request->dni,
-          'userType_id' => $request->userType_id,
-          'school_id' => ($request->school_id==0)? NULL : $request->school_id,
-          'instEmail' => $request->instEmail,
-          'code' => $request->code,
-          'state' => $state
-        ]);
-        $password = "";
-        //Ver contraseña del usuarios -> Esta incompleto
-        //Si son empleados
-        if ($user->userType_id == 1 || $user->userType_id == 2 || $user->userType_id == 3 || $user->userType_id == 4 ) {
-          $password = null;
-        }else{
-          //Si son lectores
-          $password = bcrypt($user->code);
-        }
-        
-        $urlImgName = ($request->file('urlImg')!=null)?time().$request->file('urlImg')->getClientOriginalName():null;
+          'dateOfBirth' => $request->date,
+          'cellphone' => $request->cellphone,
+          'email' => $request->email,
+          'office' => $request->office,
+          'photo' => null,
 
-
-        $userSpecification = UserSpecification::create([
-          'phone' => $request->phone,
-          'cellPhone' => $request->cellphone,
-          'personalEmail' => $request->personalEmail,
-          'address' => $request->address,
-          'description' => $request->description,
-          'user_id' => $user->id,
-          'password' => $password,
-          'urlImg' => $urlImgName ,
+          'code' => $request->name.$request->lastName,
+          'password' => bcrypt($request->dni),
         ]);
-        if($urlImgName!=null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImg')));
+           
+        // if($urlImgName!=null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImg')));
         
 
 
