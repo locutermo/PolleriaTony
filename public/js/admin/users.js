@@ -37,7 +37,6 @@ function showCreateUser(){
 
 function createUser(){
     buttonCreate.on('click',function(event) {
-        alert('probando');
       var formData = new FormData('#formNewUser');
       //porcentaje==100 && PERCENTAGE_USER
       //Por el momento no habrá validación para registrar, solo se está probando la funcionalidad

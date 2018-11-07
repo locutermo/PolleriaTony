@@ -35,6 +35,15 @@
                 </span> --}}
               </a>
           </li>
+          <li>
+             <a href="http://polleriatony.herokuapp.com/admin/users"> 
+              <a href="#">
+              <i class="fa fa-user"></i> <span>Usuarios</span>
+              {{-- <span class="pull-right-container">
+                <small class="label pull-right bg-green">new</small>
+              </span> --}}
+            </a>
+        </li>
           {{-- 
           <li class="treeview">
             <a href="#">
