@@ -17,9 +17,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
+        'dni',
+        'dateOfBirth',
+        'cellphone',
+        'email',
+        'office',
+        'photo',
+
         'code',
         'password',
-        'type',
     ];
 
     /**
@@ -33,15 +40,15 @@ class User extends Authenticatable
 
     public function getType(){
         
-          switch ($this->type) {
+          switch ($this->office) {
             case 1:
-              return "Jefe de Area";
+              return "Administrador";
               break;
               case 2:
-                return "Mozo";
+                return "Despachador";
                 break;
                 case 3:
-                  return "Cocinero";
+                  return "Mozo";
                   break;
             default:
               // code...
