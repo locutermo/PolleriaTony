@@ -12,8 +12,89 @@ $(document).ready(function(){
     insertButtonCreate();
     showInformation();
     instansFunctionsUserCreate();
+    instansFunctionUserDelete();
     //initKeyupValidate();
 })
+
+function instansFunctionUserDelete(){
+  console.log('init functions delete...');
+  deleteUser();
+}
+
+function deleteUser(){
+  $(document).on('click','.deleteUser',function(event){
+    $id = $(this).data('id');
+    if ($id == 1) {
+      swal({
+          title: "Operación no Procede !!",
+          text: "Por regla general, no puede eliminar al jefe de biblioteca",
+          type: "error",
+      });
+    }else{
+        $.ajax({
+           url: 'users/'+$id+'/destroyValidation',
+           type:'post',
+           data:{_token : $('#tokenUser').val(),
+           },
+           success: function(data)
+           {
+              var obj =  JSON.parse(data);
+              if(obj.caso == '1' || obj.caso == "2" || obj.caso == "3" || obj.caso == "4"){
+                swal({
+                    title: obj.titulo,
+                    text: obj.texto,
+                    type: "error",
+                });
+              }
+              if(obj.caso == '0'){
+                  swal({
+                    title: obj.titulo,
+                    text: obj.texto,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sí , Eliminar !",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                  }, function(isConfirm){
+                    if (isConfirm) {
+                         $.ajax({
+                           url: 'users/'+$id+'/destroy',
+                           type:'post',
+                           data:{_token : $('#tokenUser').val(),
+                           },
+                           success: function(data)
+                           {
+                             var obj =  JSON.parse(data);
+                             if(obj.caso == '1' || obj.caso == "2" || obj.caso == "3"){
+                                swal({
+                                  title: obj.titulo,
+                                  text: obj.texto,
+                                  type: "error",
+                                });
+                              }else{
+                                swal({
+                                  title: obj.titulo,
+                                  text: obj.texto,
+                                  type: "success",
+                                },function(){
+                                  console.log("deleted user");
+                                  location.reload();
+                                });
+                              }
+                           },
+                         });
+                    } else {
+                        swal("Cancelado", "La operación fue cancelada", "error");
+                    }
+                });
+              }
+           }
+         });
+      }
+  });
+}
 
 function insertButtonCreate(){
     $('.table-users').before('<button id="create_user" data-toggle="modal" class="pull-left fcbtn btn btn-outline btn-danger btn-1f" data-target="#create-user-modal" type="button" name="button" style="height: 31.31px;font-size:0.88em; padding: 0.5em 1em;"><i class="fa fa-plus"></i> Agregar Usuario</button>');
