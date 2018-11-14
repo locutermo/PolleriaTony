@@ -27,7 +27,7 @@ function deleteUser(){
     if ($id == 1) {
       swal({
           title: "Operación no Procede !!",
-          text: "Por regla general, no puede eliminar al jefe de biblioteca",
+          text: "Por regla general, no puede eliminar al Administrador",
           type: "error",
       });
     }else{
