@@ -16,16 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'lastname',
-        'dni',
-        'dateOfBirth',
-        'cellphone',
-        'email',
-        'office',
-        'photo',
-
-        'code',
+        'username',
         'password',
     ];
 
@@ -38,22 +29,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getType(){
-        
-          switch ($this->office) {
-            case 1:
-              return "Administrador";
-              break;
-              case 2:
-                return "Despachador";
-                break;
-                case 3:
-                  return "Mozo";
-                  break;
-            default:
-              // code...
-              break;
-          }
-      }
+    public function worker()
+    {
+      return $this->hasOne('App\Worker', 'user_id');
+    }
 
 }

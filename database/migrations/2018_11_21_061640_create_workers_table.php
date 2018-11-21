@@ -14,7 +14,20 @@ class CreateWorkersTable extends Migration
     public function up()
     {
         Schema::table('workers', function (Blueprint $table) {
-            //
+            $table->increments('id');
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('dni')->unique();
+            $table->date('birthday')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->smallInteger('type');
+            $table->string('photo')->nullable();
+
+            $table->smallInteger("user_id")->unsigned();
+            $table->foreign("user_id")->references('id')->on("users");
+
+            $table->timestamps();
         });
     }
 
@@ -26,7 +39,7 @@ class CreateWorkersTable extends Migration
     public function down()
     {
         Schema::table('workers', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('orders');
         });
     }
 }

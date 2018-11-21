@@ -14,7 +14,11 @@ class CreateTablesTable extends Migration
     public function up()
     {
         Schema::table('tables', function (Blueprint $table) {
-            //
+            $table->increments('id');
+            $table->integer("number");
+            $table->integer("capacity");
+
+            $table->timestamp();
         });
     }
 
@@ -26,7 +30,8 @@ class CreateTablesTable extends Migration
     public function down()
     {
         Schema::table('tables', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('tables');
+
         });
     }
 }

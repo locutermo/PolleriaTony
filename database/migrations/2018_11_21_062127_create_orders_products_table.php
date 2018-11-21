@@ -15,6 +15,14 @@ class CreateOrdersProductsTable extends Migration
     {
         Schema::create('orders_products', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('quantify');
+
+            $table->smallInteger("order_id")->unsigned();
+            $table->foreign("order_id")->references('id')->on("orders");
+
+            $table->smallInteger("product_id")->unsigned();
+            $table->foreign("product_id")->references('id')->on("products");
+
             $table->timestamps();
         });
     }

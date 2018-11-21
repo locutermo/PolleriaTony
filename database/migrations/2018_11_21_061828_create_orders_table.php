@@ -15,6 +15,16 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('observation')->nullable();
+            $table->smallInteger('state')->unsigned();
+            $table->integer('totalTimeout')->nullable();
+
+            $table->smallInteger("worker_id")->unsigned();
+            $table->foreign("worker_id")->references('id')->on("workers");
+            $table->smallInteger("table_id")->unsigned();
+            $table->foreign("table_id")->references('id')->on("tables");
+
             $table->timestamps();
         });
     }

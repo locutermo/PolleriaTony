@@ -13,15 +13,20 @@ class UsersTableSeeder extends Seeder
     public function run(){
     
         User::create([
+            'username' => "locutermo",
+            'password' => bcrypt('admin'),
+        ]);
+
+        Worker::create([
+            'user_id' => 1,
             'name' => 'Jose Francisco',
             'lastname'=> 'Mateo Carrasco',
             'dni'=> '77041708',
-            'dateOfBirth'=> null,
-            'cellphone'=>'952283982',
+            'birthday'=> null,
+            'phone'=>'952283982',
             'email'=> 'locutermo@gmail.com',
-            'office'=> 1,
-            'code' => 'jose.mc@admin.com',
-            'password' => bcrypt('admin'),
+            'type'=> 1,
+            'photo'=>NULL,
         ]);
         // User::create([
         //     'id'=>2,

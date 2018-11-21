@@ -21,6 +21,9 @@ class Product extends Model
         'wait_time'
     ];
 
-
+    public function orders()
+    {
+      return $this->belongsToMany('App\Order', 'orders_products')->withPivot('quantify');
+    }
     
 }
