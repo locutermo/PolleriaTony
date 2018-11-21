@@ -17,7 +17,7 @@ class CreateWorkersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('lastname');
-            $table->string('dni')->unique();
+            $table->string('dni');
             $table->date('birthday')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();

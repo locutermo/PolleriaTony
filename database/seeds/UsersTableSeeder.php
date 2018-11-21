@@ -29,6 +29,24 @@ class UsersTableSeeder extends Seeder
             'type'=> 1,
             'photo'=>NULL,
         ]);
+
+        User::create([
+            'username' => "antoni",
+            'password' => bcrypt('admin'),
+        ]);
+
+        Worker::create([
+            'user_id' => 2,
+            'name' => 'Antoni',
+            'lastname'=> 'Bancayan',
+            'dni'=> '9876542',
+            'birthday'=> null,
+            'phone'=>'999998',
+            'email'=> 'antonix@gmail.com',
+            'type'=> 2,
+            'photo'=>NULL,
+        ]);
+
         // User::create([
         //     'id'=>2,
         //     'name' => 'Juan Alexis',
