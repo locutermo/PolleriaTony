@@ -20,9 +20,9 @@ class CreateOrdersTable extends Migration
             $table->smallInteger('state')->unsigned();
             $table->integer('totalTimeout')->nullable();
 
-            $table->smallInteger("worker_id")->unsigned();
+            $table->integer("worker_id")->unsigned();
             $table->foreign("worker_id")->references('id')->on("workers");
-            $table->smallInteger("table_id")->unsigned();
+            $table->integer("table_id")->unsigned();
             $table->foreign("table_id")->references('id')->on("tables");
 
             $table->timestamps();
