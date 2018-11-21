@@ -1,6 +1,6 @@
 $(document).ready(function(){
     initDropify();
-
+        
     instansDT($('.datatable'));
     initSelect();
     initDTExport($('.table-export-pdf'));

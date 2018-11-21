@@ -6,6 +6,7 @@
 /.idea
 /.vscode
 /.vagrant
+vendor
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -13,3 +14,5 @@ yarn-error.log
 .env
 .phpunit.result.cache
  gulpfile.js
+vendor/composer/ClassLoader.php
+vendor/composer/autoload_static.php
