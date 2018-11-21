@@ -8,7 +8,7 @@
             <img src="{{ asset('img/avatar.png') }}" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>{{Auth::User()->name}}</p>
+            <p>{{Auth::User()->worker->name}}</p>
             <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
           </div>
         </div>
@@ -36,11 +36,12 @@
               </a>
           </li>
           <li>
-             <a href="http://polleriatony.herokuapp.com/admin/users"> 
+             {{-- <a href="http://polleriatony.herokuapp.com/admin/users">  --}}
+              <a href="users">
               <i class="fa fa-user"></i> <span>Usuarios</span>
-              {{-- <span class="pull-right-container">
+              <span class="pull-right-container">
                 <small class="label pull-right bg-green">new</small>
-              </span> --}}
+              </span>
             </a>
         </li>
           {{-- 

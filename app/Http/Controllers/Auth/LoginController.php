@@ -40,7 +40,7 @@ class LoginController extends Controller
     public function login(Request $request){        
         //Esto se activará cuando se quiera validar, será al final 
         //cuando se pongan los middleware
-        $employees = User::all()->where('code',$request->code);
+        $employees = User::all()->where('username',$request->code);
         
         if($employees->isEmpty()){
                 echo "<strong>TEMPORAL</strong>";

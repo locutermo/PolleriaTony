@@ -20,14 +20,14 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   {{-- <img src="{{ asset('img/.jpg') }}" class="img-circle" alt="User Image">             --}}
-                  <span class="hidden-xs">{{Auth::User()->name}}</span>
+                  <span class="hidden-xs">{{Auth::User()->worker->name}}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                     <img src="{{ asset('img/avatar.png') }}" class="img-circle" alt="User Image">  
                   <p>
-                    {{Auth::User()->name}} - {{Auth::User()->getType()}}
+                    {{Auth::User()->worker->name}} - {{Auth::User()->worker->getType()}}
                     <small>Miembro desde {{Auth::User()->created_at}}</small>
                   </p>
                 </li>
@@ -52,7 +52,7 @@
                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="/logout" class="btn btn-default btn-flat">Cerrar sesión</a>
+                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Cerrar sesión</a>
                   </div>
                 </li>
               </ul>

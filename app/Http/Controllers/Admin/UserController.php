@@ -59,29 +59,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-      $users = User::all()->where('name',$request->code);
-      $state = -1;
-
-
-  
+      
         //Obteniendo imagen 
-        // $urlImgName = ($request->file('urlImg')!=null)?time().$request->file('urlImg')->getClientOriginalName():null;
+        $urlImgName = ($request->file('urlImg')!=null)?time().$request->file('urlImg')->getClientOriginalName():null;
 
         $user = User::create([
+          'username' => $request->code,
+          'password' => bcrypt($request->dni),
+        ]);
+
+        $worker = Worker::create([
+          'user_id' => $user->id,
           'name' => $request->name,
           'lastname' => $request->lastName,
           'dni' => $request->dni,
-          'dateOfBirth' => $request->date,
-          'cellphone' => $request->cellphone,
+          'birthday' => $request->date,
+          'phone' => $request->cellphone,
           'email' => $request->email,
-          'office' => $request->office,
-          'photo' => null,
-
-          'code' => $request->name.$request->lastName,
-          'password' => bcrypt($request->dni),
+          'type' => $request->office,
+          'photo' => $urlImgName,
         ]);
            
-        // if($urlImgName!=null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImg')));
+         if($urlImgName!=null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImg')));
         
 
 

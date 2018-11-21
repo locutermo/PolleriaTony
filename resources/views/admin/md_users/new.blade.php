@@ -51,8 +51,8 @@
                                         <div class="help-block with-errors"></div>
                                       </div>
                                       <div class="form-group col-sm-6">
-                                            <label for="inputCellPhoneUser" class="control-label">Celular</label>
-                                            <input type="text" name="phone" data-mask="999-9999" class="form-control" id="inputCellPhoneUser" >
+                                            <label for="inputCodeUser" class="control-label">Código</label>
+                                            <input type="text" name="code" class="form-control" id="inputCodeUser" placeholder="Código de entrada">
                                             <div class="help-block with-errors"></div>
                                       </div>
                                   </div>
@@ -60,7 +60,7 @@
                         
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="form-group col-sm-12">
+                                        <div class="form-group col-sm-6">
                                           <label for="inputPersonalEmailUser" class="control-label">Correo Personal</label>
                                           <input type="email" name="personalEmail" class="form-control" id="inputPersonalEmailUser" placeholder="Ingrese su email personal" >
                                           <div class="help-block with-errors"></div>
@@ -70,6 +70,11 @@
                                           <input type="text" name="address" class="form-control" id="inputAddressUser" placeholder="XXXXX" >
                                           <div class="help-block with-errors"></div>
                                         </div> --}}
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputCellPhoneUser" class="control-label">Celular</label>
+                                            <input type="text" name="phone" data-mask="999-9999" class="form-control" id="inputCellPhoneUser" >
+                                            <div class="help-block with-errors"></div>
+                                      </div>
                                     </div>
                                 </div>
 

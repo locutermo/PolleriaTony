@@ -28,7 +28,7 @@ class Worker extends Model
 
     public function getType(){
         
-        switch ($this->office) {
+        switch ($this->type) {
           case 1:
             return "Jefe de Área";
             break;

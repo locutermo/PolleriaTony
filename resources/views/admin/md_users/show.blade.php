@@ -19,15 +19,15 @@
 		<tbody>
 		@foreach ($users as $user)
 			<tr>
-				<td>{{$user->name}} {{$user->lastname}}</td>
+				<td>{{$user->worker->name}} {{$user->worker->lastname}}</td>
 				<td> .. </td>
-				<td>{{$user->dni}}</td>
-				<td>{{$user->getType()}}</td>
-				<td>{{$user->email}}</td>
-				<td>{{$user->cellphone}}</td>
+				<td>{{$user->worker->dni}}</td>
+				<td>{{$user->worker->getType()}}</td>
+				<td>{{$user->worker->email}}</td>
+				<td>{{$user->worker->phone}}</td>
 				<td class="text-center">
-				<button type="button"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editUser" data-id="{{$user->id}}" ><i class="fa fa-pencil"></i></button>
-						<button type="button"   class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteUser" data-id="{{$user->id}}" ><i class="fa fa-trash"></i></button>
+				<button type="button"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editUser" data-id="{{$user->worker->id}}" ><i class="fa fa-pencil"></i></button>
+						<button type="button"   class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteUser" data-id="{{$user->worker->id}}" ><i class="fa fa-trash"></i></button>
 		
 					</td>
 			</tr>

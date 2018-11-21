@@ -155,8 +155,15 @@ function createUser(){
   
   }
 
+  /**
+   * Estos datos serán los que se envíen al controlador mediante un formData 
+   * debido a que las imagenes no se pueden serializar
+   *
+   * @param {*} formData
+   */
   function getData(formData){
     formData.append('_token',$('#token').val());
+        formData.append('code',$('#inputCodeUser').val());
         formData.append('name',$('#inputNameUser').val());
         formData.append('lastName',$('#inputLastNameUser').val());
         formData.append('date',$('#inputDateOfBirthUser').val());
