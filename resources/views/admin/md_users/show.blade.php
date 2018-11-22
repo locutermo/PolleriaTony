@@ -20,7 +20,7 @@
 		@foreach ($users as $user)
 			<tr>
 				<td>{{$user->worker->name}} {{$user->worker->lastname}}</td>
-				<td> .. </td>
+				<td> {{$user->worker->photo}}</td>
 				<td>{{$user->worker->dni}}</td>
 				<td>{{$user->worker->getType()}}</td>
 				<td>{{$user->worker->email}}</td>

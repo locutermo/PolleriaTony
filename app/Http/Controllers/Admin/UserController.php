@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User as User;
+use App\Worker as Worker;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -59,24 +60,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-      
         //Obteniendo imagen 
         $urlImgName = ($request->file('urlImg')!=null)?time().$request->file('urlImg')->getClientOriginalName():null;
 
         $user = User::create([
           'username' => $request->code,
-          'password' => bcrypt($request->dni),
+          'password' => bcrypt($request->dni)
         ]);
-
+          
         $worker = Worker::create([
           'user_id' => $user->id,
           'name' => $request->name,
           'lastname' => $request->lastName,
           'dni' => $request->dni,
           'birthday' => $request->date,
-          'phone' => $request->cellphone,
+          'phone' => $request->phone,
           'email' => $request->email,
-          'type' => $request->office,
+          'type' => $request->type,
           'photo' => $urlImgName,
         ]);
            

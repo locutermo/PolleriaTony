@@ -35,7 +35,7 @@
                                     <div class="form-group col-sm-6">
                                         <label for="inputOfficeUser" class="control-label ">Cargo (*)</label>
                                         <select class="select form-control" name="office" data-toggle="validator"  id="inputOfficeUser" required>
-                                            <option value="1">Administrador</option>
+                                            <option value="1">Jefe de Área</option>
                                             <option value="2">Despachador</option>
                                             <option value="3">Mozo</option>
                                         </select>

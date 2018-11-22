@@ -119,6 +119,7 @@ function showCreateUser(){
 function createUser(){
     buttonCreate.on('click',function(event) {
       var formData = new FormData('#formNewUser');
+      
       //porcentaje==100 && PERCENTAGE_USER
       //Por el momento no habrá validación para registrar, solo se está probando la funcionalidad
         if(true){
@@ -167,9 +168,9 @@ function createUser(){
         formData.append('name',$('#inputNameUser').val());
         formData.append('lastName',$('#inputLastNameUser').val());
         formData.append('date',$('#inputDateOfBirthUser').val());
-        formData.append('office',$('#inputOfficeUser').val());
+        formData.append('type',$('#inputOfficeUser').val());
         formData.append('email',$('#inputPersonalEmailUser').val());
-        formData.append('cellphone',$('#inputCellPhoneUser').val());
+        formData.append('phone',$('#inputCellPhoneUser').val());
         formData.append('dni',$('#inputDniUser').val());
         if(urlImg[0]!=null) formData.append('urlImg',urlImg[0].files[0]);
 
