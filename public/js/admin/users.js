@@ -1,6 +1,7 @@
 var PERCENTAGE_USER = true;
 var isCreate = false ; 
 var urlImg =  $('#urlImg');
+var urlImgEdit =  $('#urlImgEdit');
 var porcentaje = 0;
 
 
@@ -12,14 +13,9 @@ $(document).ready(function(){
     insertButtonCreate();
     showInformation();
     instansFunctionsUserCreate();
-    instansFunctionUserDelete();
-    //initKeyupValidate();
+    showEditUser();
+    deleteUser();
 })
-
-function instansFunctionUserDelete(){
-  console.log('init functions delete...');
-  deleteUser();
-}
 
 function deleteUser(){
   $(document).on('click','.deleteUser',function(event){
@@ -27,14 +23,14 @@ function deleteUser(){
     if ($id == 1) {
       swal({
           title: "Operación no Procede !!",
-          text: "Por regla general, no puede eliminar al Administrador",
+          text: "Por regla general, no puede eliminar al Jefe de Área",
           type: "error",
       });
     }else{
         $.ajax({
            url: 'users/'+$id+'/destroyValidation',
            type:'post',
-           data:{_token : $('#tokenUser').val(),
+           data:{_token : $('#token').val(),
            },
            success: function(data)
            {
@@ -62,7 +58,7 @@ function deleteUser(){
                          $.ajax({
                            url: 'users/'+$id+'/destroy',
                            type:'post',
-                           data:{_token : $('#tokenUser').val(),
+                           data:{_token : $('#token').val(),
                            },
                            success: function(data)
                            {
@@ -100,6 +96,65 @@ function insertButtonCreate(){
     $('.table-users').before('<button id="create_user" data-toggle="modal" class="pull-left fcbtn btn btn-outline btn-danger btn-1f" data-target="#create-user-modal" type="button" name="button" style="height: 31.31px;font-size:0.88em; padding: 0.5em 1em;"><i class="fa fa-plus"></i> Agregar Usuario</button>');
 }
 
+function showEditUser(){
+  $(document).on('click',".editUser",function(event) {
+    isCreate=false;
+    $id = $(this).data('id');
+    if($id == 1){
+      swal({
+          title: "Operación no Procede !!",
+          text: "Por regla general , no se puede editar al Jefe de Área",
+          type: "error",
+      });
+    }else{
+      $(".div-edit").load('users/'+$id+'/edit',function(){
+        $('#edit-user-modal').modal({show:true});
+      });
+    }
+  });
+}
+
+function editUser(){
+    $(document).on('click',"#btnEditarUsuario",function(event) {
+      if(true){
+        var formData = new FormData('#formEditUser');      
+        $id = $(this).data('id');
+        formData.append('_token',$('#token').val());
+        getDataEdit(formData);
+        $.ajax({
+             url: 'users/update',
+             type:'post',
+             data: formData,
+            processData: false,
+            contentType: false,
+            success: function(e){
+              swal({
+                 title: "Operación exitosa !! ",
+                 text: "El usuario ha sido editado correctamente",
+                 type: "success",
+               },function(){
+                   location.reload();
+               });
+            },error:function(e){
+                    swal({
+                      title: "Error inesperado!!",
+                      text: "Ha ocurrido un error inesperado, contacte a los desarrolladores .",
+                      type: "error",
+                    });
+            }
+        });
+  
+      }else{
+        swal({
+            title: "Error al registrar el Usuario",
+            text: "Revise si hay campos vacíos o repetidos",
+            type: "error",
+          });
+      }
+
+  });
+}
+
 function instansFunctionsUserCreate(){
     console.log('init functions create...');
     showCreateUser();    
@@ -111,7 +166,6 @@ function showCreateUser(){
     $('#create_user').on('click',function(event){
         isCreate=true;
         porcentaje = 0 ;
-        //calculatePercentage($('.section-main-user'));
         console.log('init show create');
     });
 }
@@ -120,17 +174,17 @@ function createUser(){
     buttonCreate.on('click',function(event) {
       var formData = new FormData('#formNewUser');
       
-      //porcentaje==100 && PERCENTAGE_USER
-      //Por el momento no habrá validación para registrar, solo se está probando la funcionalidad
+      
         if(true){
         getData(formData);
         $.ajax({
             url: 'users/store',
             type:'post',
             data: formData,
-           processData: false,
-           contentType: false,
+            processData: false,
+            contentType: false,
             success: function (response) {
+              console.log(response);
                 swal({
                     title: "Operación exitosa !! ",
                     text: "El usuario ha sido registrado correctamente",
@@ -163,7 +217,7 @@ function createUser(){
    * @param {*} formData
    */
   function getData(formData){
-    formData.append('_token',$('#token').val());
+        formData.append('_token',$('#token').val());
         formData.append('code',$('#inputCodeUser').val());
         formData.append('name',$('#inputNameUser').val());
         formData.append('lastName',$('#inputLastNameUser').val());
@@ -176,74 +230,20 @@ function createUser(){
 
   }
 
-  function initKeyupValidate(){
-    $('.input[data-toogle="validator"]').on('keyup',function(event){
-      calculatePercentage($('.section-main-user'));
-      console.log(porcentaje);
-    })
-  }
 
-  function calculatePercentage(classSttabsUser){
-    if(PERCENTAGE_USER){
-      var errores = 0 ;
-      var inputs = classSttabsUser.find(' input[data-toggle="validator"]').size();
-      var select = classSttabsUser.find(' select[data-toggle="validator"]').size();
-      var textarea = classSttabsUser.find(' textarea[data-toggle="validator"]').size();
-      var total =  inputs+select+textarea;
-      classSttabsUser.find(' input[data-toggle="validator"]').each(function(){
-        if($(this).val()=='' || $(this).parent().hasClass('has-error')){
-          errores++;
-        }
-      });
-    
-      classSttabsUser.find(' select[data-toggle="validator"]').each(function(){
-        if($(this).hasClass('select2-multiple')){
-          if($(this).val() == null){
-            errores++;
-          }
-        }else{
-          if($(this).find('option:selected').val() == -1 || $(this).parent().hasClass('has-error')){
-            errores++;
-          }
-        }
-      });
-      classSttabsUser.find(' textarea[data-toggle="validator"]').each(function(){
-        if($(this).val()=='' || $(this).parent().hasClass('has-error')){
-          errores++;
-        }
-      });
-      var actual = total - errores ;
-      porcentaje = actual*100/total;
-      console.log('entró en el calculo de porcentaje: ',porcentaje, actual , total ,errores,isCreate);
-      if(isCreate) $('#percentage').html('( '+porcentaje.toFixed(2)+'% )');
-      else $('#percentageEdit').html('( '+porcentaje.toFixed(2)+'% )');
-            
-      if(porcentaje == 100){
-        if(isCreate){
-          buttonCreate.removeClass("btn-primary");
-          buttonCreate.removeClass("btn-danger");
-          buttonCreate.addClass("btn-success");
-        }else{
-          $('#btnEditarUsuario').removeClass("btn-primary");
-          $('#btnEditarUsuario').removeClass("btn-danger");
-          $('#btnEditarUsuario').addClass("btn-success");
-        }
-  
-      }else{     
-        if(isCreate)  {
-          buttonCreate.removeClass("btn-primary");
-          buttonCreate.removeClass("btn-success");
-          buttonCreate.addClass("btn-danger");
-        }else{
-          $('#btnEditarUsuario').removeClass("btn-primary");
-          $('#btnEditarUsuario').removeClass("btn-success");
-          $('#btnEditarUsuario').addClass("btn-danger");
-        }
-        
-      }
-      }else console.log("Calculate percent off");
-  }
+  function getDataEdit(formData){
+    formData.append('id',$id);
+    formData.append('code',$('#inputEditCodeUser').val());
+    formData.append('name',$('#inputEditNameUser').val());
+    formData.append('lastName',$('#inputEditLastNameUser').val());
+    formData.append('date',$('#inputEditDateOfBirthUser').val());
+    formData.append('type',$('#inputEditOfficeUser').val());
+    formData.append('email',$('#inputEditPersonalEmailUser').val());
+    formData.append('phone',$('#inputEditCellPhoneUser').val());
+    formData.append('dni',$('#inputEditDniUser').val());
+    if(urlImgEdit[0]!=null) formData.append('urlImg',urlImgEdit[0].files[0]);
 
+}
 
 
   function showInformation(){

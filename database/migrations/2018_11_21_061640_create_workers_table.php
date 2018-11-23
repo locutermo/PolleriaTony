@@ -15,8 +15,8 @@ class CreateWorkersTable extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->string('lastname');
+            $table->string('name');
             $table->string('dni');
             $table->date('birthday')->nullable();
             $table->string('phone')->nullable();
@@ -25,7 +25,7 @@ class CreateWorkersTable extends Migration
             $table->string('photo')->nullable();
 
             $table->integer("user_id")->unsigned();
-            $table->foreign("user_id")->references('id')->on("users");
+            $table->foreign("user_id")->references('id')->on("users")->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -7,8 +7,8 @@
 	  <table class="table-export-pdf table-users table table-striped">
 		<thead>
 		<tr>
+			<th>Foto</th>
 		  <th>Empleado</th>
-		  <th>Foto</th>
 		  <th>DNI</th>
 		  <th>Cargo</th>
 		  <th>Email</th>
@@ -19,8 +19,10 @@
 		<tbody>
 		@foreach ($users as $user)
 			<tr>
+				<td>
+					<img width="30"  @if($user->worker->photo!=null) src="{{ asset('imgUsuarios/'.$user->worker->photo) }}" @else src="{{ asset('img/avatar.png') }}" @endif alt="user" class="img-circle" />
+				</td>
 				<td>{{$user->worker->name}} {{$user->worker->lastname}}</td>
-				<td> {{$user->worker->photo}}</td>
 				<td>{{$user->worker->dni}}</td>
 				<td>{{$user->worker->getType()}}</td>
 				<td>{{$user->worker->email}}</td>
