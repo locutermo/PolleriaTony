@@ -16,3 +16,4 @@ yarn-error.log
  gulpfile.js
 vendor/composer/ClassLoader.php
 vendor/composer/autoload_static.php
+.env
