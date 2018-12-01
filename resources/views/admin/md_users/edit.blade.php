@@ -93,7 +93,7 @@
                         <!-- /content -->
                 </section>
                 <div class="footer-boton text-center">
-                <button data-id="{{$worker->id}}" id="btnEditarUsuario" type="button" class="fcbtn btn btn-outline btn-primary btn-1e"> <i class="fa fa-envelope-o m-r-5"></i> <span >Editar</span></button>
+                <button data-id="{{$worker->user->id}}" id="btnEditarUsuario" type="button" class="fcbtn btn btn-outline btn-primary btn-1e"> <i class="fa fa-envelope-o m-r-5"></i> <span >Editar</span></button>
                   {{-- <button id="btnCrearUsuario" type="button" class="fcbtn btn btn-outline btn-primary btn-1e"> <i class="fa fa-envelope-o m-r-5"></i> <span >Crear</span> <span id="percentage"> 0% </span></button> --}}
                 </div>
                 </form>

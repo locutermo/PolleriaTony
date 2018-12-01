@@ -1,7 +1,7 @@
 var PERCENTAGE_USER = true;
 var isCreate = false ; 
 var urlImg =  $('#urlImg');
-var urlImgEdit =  $('#urlImgEdit');
+
 var porcentaje = 0;
 
 
@@ -241,7 +241,7 @@ function createUser(){
     formData.append('email',$('#inputEditPersonalEmailUser').val());
     formData.append('phone',$('#inputEditCellPhoneUser').val());
     formData.append('dni',$('#inputEditDniUser').val());
-    if(urlImgEdit[0]!=null) formData.append('urlImg',urlImgEdit[0].files[0]);
+    if($('#urlImgEdit')[0]!=null) formData.append('urlImg',$('#urlImgEdit')[0].files[0]);
 
 }
 

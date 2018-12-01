@@ -122,22 +122,26 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-      $worker = Worker::find($request->id);
+      $user = User::find($request->id);
+      $worker = $user->worker;
       $urlImgName = ($request->file('urlImg')!=null)?time().$request->file('urlImg')->getClientOriginalName():null;
       
-      if($request->name!=null) $worker->name = $request->name;
-      if($request->lastname!=null) $worker->lastname = $request->lastname;
-      if($request->dni!=null) $worker->dni = $request->dni;
+      $worker->name = $request->name;
+      $worker->lastname = $request->lastName;
+      $worker->dni = $request->dni;
       $worker->birthday = $request->date;
+      $worker->email = $request->email ; 
       $worker->phone = $request->phone;
-      if($request->type!=null) $worker->type = $request->type;
-      $worker->photo = $urlImgName;
+      $worker->type = $request->type;
+      if ($urlImgName!=null) {
+        $worker->photo = $urlImgName;
+      }
 
       $worker->user->username = $request->code;
       $worker->user->password = bcrypt($request->dni);
       
       $worker->save();
-      $worker->user->save();
+      $user->save();
         
         //Almacenando la imagen con su nombre en la carpeta local solo si el archivo existe
         if($urlImgName!=null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImg')));
