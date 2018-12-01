@@ -19,9 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('stock');
-            $table->integer('description')->nullable();
+            $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('waitTime')->nullable();
+            $table->timestamps();
 
         });
     }

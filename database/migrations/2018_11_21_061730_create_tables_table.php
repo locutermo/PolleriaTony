@@ -18,6 +18,9 @@ class CreateTablesTable extends Migration
             $table->integer("number")->unsigned();
             $table->integer("capacity");
 
+            $table->timestamps();
+
+
             
         });
     }
