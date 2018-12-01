@@ -20,7 +20,7 @@
 		@foreach ($users as $user)
 			<tr>
 				<td>
-					<img width="30"  @if($user->worker->photo!=null) src="{{ asset('imgUsuarios/'.$user->worker->photo) }}" @else src="{{ asset('img/avatar.png') }}" @endif alt="user" class="img-circle" />
+					<img width="40" height="40"  @if($user->worker->photo!=null) src="{{ asset('imgUsuarios/'.$user->worker->photo) }}" @else src="{{ asset('img/avatar.png') }}" @endif alt="user" class="img-circle" />
 				</td>
 				<td>
 					<a class="showUserInformation" data-id="{{$user->worker->id}}" href="#" >
