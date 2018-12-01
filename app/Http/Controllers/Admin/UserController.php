@@ -29,7 +29,7 @@ class UserController extends Controller
 
         $show = view('admin.md_users.show',[
             'users' => $users,
-            'user' => null
+            'worker' => null
         ]);
         //Verificar permisos del empleado
         return view('admin.md_users.index',[
@@ -153,9 +153,9 @@ class UserController extends Controller
 
     public function information($id)
     {
-      $user = User::find($id);
+      $worker = Worker::find($id);
       return  view('admin.md_users.information', [
-         'user' => $user,
+         'worker' => $worker,
       ]);
     }
 

@@ -31,6 +31,10 @@ class Worker extends Model
        return $this->belongsTo("App\User","user_id");
    }
 
+   public function isEmployee(){
+       return ($this->type==1 || $this->type==2 ||$this->type==3 );
+   }
+
     public function getType(){
         
         switch ($this->type) {

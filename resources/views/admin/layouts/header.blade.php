@@ -25,7 +25,7 @@
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                    <img src="{{ asset('img/avatar.png') }}" class="img-circle" alt="User Image">  
+                    <img  @if(Auth::User()->worker->photo!=null) src="{{ asset('imgUsuarios/'.Auth::User()->worker->photo) }}" @else src="{{ asset('img/avatar.png') }}" @endif  class="img-circle" alt="User Image">
                   <p>
                     {{Auth::User()->worker->name}} - {{Auth::User()->worker->getType()}}
                     <small>Miembro desde {{Auth::User()->created_at}}</small>

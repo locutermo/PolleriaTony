@@ -17,6 +17,18 @@ $(document).ready(function(){
     deleteUser();
 })
 
+function showInformation(){
+  $(document).on('click','.showUserInformation',function(event){
+    
+    $id = $(this).data('id');
+      $('#show-information').modal({show:'true'});
+      $('#show-information').load('users/'+$id+'/information');
+      $('#show-information').modal({show:'false'});
+ 
+    });
+
+}
+
 function deleteUser(){
   $(document).on('click','.deleteUser',function(event){
     $id = $(this).data('id');

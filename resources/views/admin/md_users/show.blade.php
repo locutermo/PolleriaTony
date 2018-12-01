@@ -22,7 +22,11 @@
 				<td>
 					<img width="30"  @if($user->worker->photo!=null) src="{{ asset('imgUsuarios/'.$user->worker->photo) }}" @else src="{{ asset('img/avatar.png') }}" @endif alt="user" class="img-circle" />
 				</td>
-				<td>{{$user->worker->name}} {{$user->worker->lastname}}</td>
+				<td>
+					<a class="showUserInformation" data-id="{{$user->worker->id}}" href="#" >
+						{{$user->worker->name}} {{$user->worker->lastname}}
+					<a>
+				</td>
 				<td>{{$user->worker->dni}}</td>
 				<td>{{$user->worker->getType()}}</td>
 				<td>{{$user->worker->email}}</td>
