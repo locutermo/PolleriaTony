@@ -19,11 +19,14 @@ class CreateOrdersTable extends Migration
             $table->string('observation')->nullable();
             $table->smallInteger('state')->unsigned();
             $table->integer('totalTimeout')->nullable();
-
+            $table->integer('totalPrice')->nullable();
+            $table->date('date')->nullable(); //Fecha en que se realiza el pedido
             $table->integer("worker_id")->unsigned();
             $table->foreign("worker_id")->references('id')->on("workers");
             $table->integer("table_id")->unsigned();
             $table->foreign("table_id")->references('id')->on("tables");
+
+
 
             $table->timestamps();
         });

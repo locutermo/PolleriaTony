@@ -18,7 +18,10 @@ Route::middleware(['route','admin'])->group(function () {
 		
 
 		Route::get('orders','OrderController@index');
-	  Route::post('orders/store','OrderController@store');
+		Route::post('orders/store','OrderController@store');
+		Route::get('orders/{id}/edit','OrderController@edit');
+		Route::post('orders/product','OrderController@product');
+		Route::post('orders/update', 'OrderController@update');
 
 
 });

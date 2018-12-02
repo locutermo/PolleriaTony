@@ -17,6 +17,7 @@ class CreateTablesTable extends Migration
             $table->increments('id');
             $table->integer("number")->unsigned();
             $table->integer("capacity");
+            $table->smallInteger('state')->unsigned();
 
             $table->timestamps();
 

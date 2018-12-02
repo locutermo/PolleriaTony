@@ -17,6 +17,7 @@ $factory->define(App\Table::class, function (Faker $faker) {
     return [
         'number' => $faker->unique->numberBetween(0,48),
         'capacity' => $faker->numberBetween(0,5),
+        'state' => 1 ,
     ];
 });
 

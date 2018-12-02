@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 function initSelect(){
     $(".select2").select2();
-   
+    $(".select2-modificado").select2();
 }
 
 function initDropify(){
