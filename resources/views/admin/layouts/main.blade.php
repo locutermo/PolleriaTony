@@ -117,6 +117,7 @@
    <script type="text/javascript" src="{{ asset('js/admin/main.js') }}"></script>
    <script type="text/javascript" src="{{ asset('js/admin/users.js') }}"></script>
    <script type="text/javascript" src="{{ asset('js/admin/orders.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('js/admin/tables.js') }}"></script>
 
    <script src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
 

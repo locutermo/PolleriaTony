@@ -11,6 +11,7 @@ Route::middleware(['route','admin'])->group(function () {
 	  	Route::post('users/carnetValidation','UserController@carnetValidation');
 	  	Route::post('users/dniValidation','UserController@dniValidation');
 	  Route::get('users/{id}/information','UserController@information');
+
 	  Route::get('users/{id}/edit', 'UserController@edit');
 	  Route::post('users/update', 'UserController@update');
 	  Route::post('users/{id}/destroyValidation', 'UserController@destroyValidation');
@@ -23,5 +24,16 @@ Route::middleware(['route','admin'])->group(function () {
 		Route::post('orders/product','OrderController@product');
 		Route::post('orders/update', 'OrderController@update');
 
+
+
+
+
+		//Ruta para tables
+		Route::get('tables','TableController@index');
+		Route::post('tables/store','TableController@store');
+		Route::get('tables/{id}/edit', 'TableController@edit');
+		Route::post('tables/update', 'TableController@update');
+		Route::post('tables/{id}/destroyValidation', 'TableController@destroyValidation');
+		Route::post('tables/{id}/destroy', 'TableController@destroy');
 
 });

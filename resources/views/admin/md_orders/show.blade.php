@@ -1,5 +1,5 @@
-<div class="box">
-	<div class="box-header">
+<div class="box box-primary">
+	<div class="box-header with-border">
 	  <h3 class="box-title text-muted">Historial de Pedidos </h3>
 	</div>
 	<!-- /.box-header -->
