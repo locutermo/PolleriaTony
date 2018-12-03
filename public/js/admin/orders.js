@@ -4,7 +4,7 @@ var isCreate = false ;
 var ID_PEDIDO = -1 ; 
 var ID_PRODUCTO = -1 ;
 var TOTAL_PRICE = 0 ; 
-var IS_CREATE = false ; 
+var IS_CREATE = true ; 
 var id_products = new Array();
 
 $(document).ready(function(){
@@ -18,6 +18,12 @@ $(document).ready(function(){
     
 })
 
+/**
+ * Este metodo obtiene el pedido a editar e inserta los datos del pedido 
+ * en los inputs además de insertar todos los valores de los productos 
+ * en la lista de productos
+ * @param {int} id 
+ */
 function insertDataOrderOnEdit(id){
     $.ajax({
         type: "get",
@@ -33,17 +39,19 @@ function insertDataOrderOnEdit(id){
             var table_id = obj.table_id ;
             //Insertando nuevos valores en el array
             
-            $id_products = new Array();
+             id_products = new Array();
+             
             products.forEach(product => {
+                console.log(product.cant);
                 var p = new Object();
                 p.id = product.id ;
-                p.count = p.cant;
-                $id_products.push(p);
+                p.count = product.cant;
+                id_products.push(p);
             });
             //Reemplazando el array que tiene los valores que se envian al controlador con los obtenidos al editar
             
             TOTAL_PRICE = obj.totalPrice
-            ID_PEDIDO = obj.order.id ;
+            
             $('#totalPrice').html('S/.'+TOTAL_PRICE);
             $('#inputObservationProductOrder').val(observation);
             $('#inputTableOrder').val(table_id);
@@ -65,6 +73,8 @@ function onCloseModal(){
     $("#create-order-modal").on("hidden.bs.modal", function () {
         resetData();
         ID_PEDIDO = -1 ; 
+        IS_CREATE = true ; 
+        TOTAL_PRICE = 0 ;
         $('#inputTableOrder').removeAttr("disabled");
         $('#totalPrice').html('S/.'+0);
         changeTitle('Agregar nuevo pedido');
@@ -87,7 +97,10 @@ function resetData(){
     $('#table-order tbody').html('');
 
 }
-
+/**
+ * Este metodo inserta los datos de los productos en la tabla : lista de pedidos
+ * @param {Array} products 
+ */
 function insertDataProductsOnEdit(products){
     products.forEach(product => {
         insertDataProduct(product.name,product.stock,product.price*product.cant);
@@ -99,6 +112,7 @@ function showEditOrder(){
         changeTitle('Modificar pedido');
         changeTitleButton('Actualizar pedido');
         var id = $(this).data('id');
+        ID_PEDIDO = id ; 
         IS_CREATE=false;
         console.log('init show edit');
         insertDataOrderOnEdit(id);
@@ -142,7 +156,11 @@ function onChangeProduct(){
     })
 }
 
-
+/**
+ * Inserta los datos del producto elegido en el selector en los inputs que muestran
+ * su información
+ * @param {int} id 
+ */
 function insertDataInformation(id){
     $.ajax({
         type: "post",
@@ -162,6 +180,11 @@ function insertDataInformation(id){
     });
 }
 
+/**
+ * Inserta el objeto producto dentro de un arreglo id_products cada vez que se 
+ * agrega productos
+ *
+ */
 function insertProductInformation(){
     var p = new Object();
     $.ajax({
@@ -221,11 +244,12 @@ function addOrder(){
                 }
             });
         }else{
+            console.log("Datos: ",ID_PEDIDO,id_products,TOTAL_PRICE);
             $.ajax({
                 type: "post",
                 url: "orders/update",
                 data: {_token : $('#token').val(),
-                    order_id : ID_PEDIDO,
+                    id : ID_PEDIDO,
                     products : id_products ,
                     totalPrice : TOTAL_PRICE,
                     observation: $('#inputObservationProductOrder').val(),

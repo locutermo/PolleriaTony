@@ -89,21 +89,28 @@ class OrderController extends Controller
 
     public function update(Request $request){
 
-        $order = Order::find($request->order_id);
+        $order = Order::find($request->id);
         $order->totalPrice = $request->totalPrice ; 
         $order->observation = $request->observation ;
         $order->save();
         // $order->products()->delete();
+        $products = $order->products();
         $order->products()->detach();
+        
+        
+
     
         foreach ($request->products as $i => $product) {
             //Disminuyendo la cantidad a cada producto
             $p = Product::find($product['id']);
+            //Solo debe disminuir el stock en caso el producto no este en la lista de pedidos
             $p->stock  = $p->stock - $product['count'];
             $p->save();
+
             $order->products()->attach($product['id'],['quantify'=> $product['count']]);
         }
     }
+
 
     public function edit($id)
     {
