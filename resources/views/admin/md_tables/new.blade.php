@@ -7,13 +7,13 @@
                   <div class="row">
                       <div class="form-group col-sm-6">
                         <label for="inputNumberTable" class="control-label">Número</label>
-                        <input type="text" name="name" class="form-control" id="inputNumberTable" placeholder="Número" required>
+                        <input type="number" name="name" class="form-control" id="inputNumberTable" placeholder="Número de mesa" min="1" required>
                         <div class="help-block with-errors"></div>
 
                       </div>
                       <div class="form-group col-sm-6">
                         <label for="inputCapacityTable" class="control-label">Capacidad <i class="ti ti-help-alt" title="Este campo hace referencia a la cantidad de sillas que tiene la mesa" data-toggle="tooltip"></i></label>
-                        <input name="level" type="number" min="1" max="5" class="form-control" id="inputCapacityTable" placeholder="" required>
+                        <input name="level" type="number" placeholder="Cantidad de sillas" min="1" max="5" class="form-control" id="inputCapacityTable" required>
                         <div class="help-block with-errors"></div>
                       </div>
                 </div>

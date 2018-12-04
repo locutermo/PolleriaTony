@@ -76,7 +76,7 @@ $(document).ready(function() {
       success: function(data)
       {
          var obj =  JSON.parse(data);
-         if(obj.caso == '1' || obj.caso == "2" || obj.caso == "3"){
+         if(obj.caso == '1' || obj.caso == "2"){
            swal({
                title: obj.titulo,
                text: obj.texto,

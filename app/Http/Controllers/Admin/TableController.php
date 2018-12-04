@@ -152,24 +152,16 @@ class TableController extends Controller
         $orders = $table->orders;
         if($table->state==2){
             //Caso 1 donde tiene pedido pendiente
-            $orders = $orders->whereIn('state',1);
+            $orders = $orders->where('state',1);
             if($orders->isNotEmpty()){
-              $order = $orders->first();
-              $txt = $txt."\Pedido: ".($i+1)."\nEmpleado : ".$order->worker->name;
-              $txt = $txt."\nMesa : ".$order->table->number;
-              $txt = $txt."\nEstado : ".$order->getState();
-            $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido pendiente asignado: ".$txt);
-            return json_encode($obj);
+              $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido pendiente asignado");
+              return json_encode($obj);
             }
           //Caso 2 donde tiene pedido activo
-            $orders = $orders->whereIn('state',2);
+            $orders = $orders->where('state',2);
             if($orders->isNotEmpty()){
-              $order = $orders->first();
-              $txt = $txt."\Pedido: ".($i+1)."\nEmpleado : ".$order->worker->name;
-              $txt = $txt."\nMesa : ".$order->table->number;
-              $txt = $txt."\nEstado : ".$order->getState();
-            $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido activo asignado: ".$txt);
-            return json_encode($obj);
+              $obj = (object) array('caso' => 2, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido activo asignado ");
+              return json_encode($obj);
             }
         }
 
