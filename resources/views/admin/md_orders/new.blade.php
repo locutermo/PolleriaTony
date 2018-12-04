@@ -16,9 +16,13 @@
                                       <div class="form-group col-sm-8">
                                         <label for="inputProductsOrder" class="control-label">Producto (*)</label>
                                         <select name="inputProductsOrder" class="form-control" id="inputProductsOrder" data-toggle="validator" placeholder="Producto" required>
-                                                <option value="0">No seleccionado</option>
+                                                <option  value="0">No seleccionado</option>
                                                 @foreach ($products as $product)
-                                                <option value="{{$product->id}}">{{$product->name}} -  S/.{{$product->price}},00</option>
+                                                <option  value="{{$product->id}}">
+                                                    <span @if($product->stock<=5) class="stock_danger" @endif >
+                                                        {{$product->name}} -  S/.{{$product->price}},00
+                                                    </span>
+                                                </option>
                                                 @endforeach
                                         </select>
                                         </div>
@@ -112,5 +116,9 @@
     <style>
         .form-group{
             margin-bottom: 5px;
+        }
+
+        #inputProductsOrder .form-control{
+            color: red;
         }
     </style>
