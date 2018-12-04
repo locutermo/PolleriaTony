@@ -93,19 +93,36 @@ class OrderController extends Controller
         $order->totalPrice = $request->totalPrice ; 
         $order->observation = $request->observation ;
         $order->save();
+
+        $old_products = $order->products;
         // $order->products()->delete();
-        $products = $order->products();
-        $order->products()->detach();
+        // $products = $order->products();
+        // $order->products()->detach();
         
         foreach ($request->products as $i => $product) {
             //Disminuyendo la cantidad a cada producto
             $p = Product::find($product['id']);
+            //Lista de productos que tenia el pedido
+            // foreach ($old_products as $key => $pro) {
+                //Si el producto de la nueva lista de productos del pedido que se genera al actualizar esta en la lista que se borró
+                //entonces no se le quitará el stock
+                
+                    // if($p->id!= $pro->id){ //Si no esta es porque es un nuevo producto
+                    if(($old_products->where('id',$p->id))->isEmpty()){//No está 
+                        $p->stock  = $p->stock - $product['count'];
+                        $order->products()->attach($p->id,['quantify'=> $product['count']]);
+                        
+                    }
+                
+            // }
+            
             //Solo debe disminuir el stock en caso el producto no este en la lista de pedidos
-            $p->stock  = $p->stock - $product['count'];
             $p->save();
-
-            $order->products()->attach($product['id'],['quantify'=> $product['count']]);
+            
+            
         }
+
+        
     }
 
 

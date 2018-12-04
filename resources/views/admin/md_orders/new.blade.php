@@ -77,7 +77,7 @@
                                                         <tr>
                                                             <th style="width: 10px">#</th>
                                                             <th>Producto</th>
-                                                            <th>Stock</th>
+                                                            <th>Unidades</th>
                                                             <th style="width: 40px">Precio </th>
                                                         </tr>
                                                     </thead>

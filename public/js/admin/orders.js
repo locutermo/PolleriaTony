@@ -48,6 +48,7 @@ function insertDataOrderOnEdit(id){
                 p.count = product.cant;
                 id_products.push(p);
             });
+            console.log("Datos anteriores: ",id_products);
             //Reemplazando el array que tiene los valores que se envian al controlador con los obtenidos al editar
             
             TOTAL_PRICE = obj.totalPrice
@@ -103,7 +104,7 @@ function resetData(){
  */
 function insertDataProductsOnEdit(products){
     products.forEach(product => {
-        insertDataProduct(product.name,product.stock,product.price*product.cant);
+        insertDataProduct(product.name,product.cant,product.price*product.cant);
     });
 }
 
@@ -244,7 +245,7 @@ function addOrder(){
                 }
             });
         }else{
-            console.log("Datos: ",ID_PEDIDO,id_products,TOTAL_PRICE);
+            console.log("Datos: id:",ID_PEDIDO," - productos: ",id_products,TOTAL_PRICE);
             $.ajax({
                 type: "post",
                 url: "orders/update",
