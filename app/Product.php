@@ -8,11 +8,7 @@ class Product extends Model
 {
     protected $table = "products";
 
-     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     protected $fillable = [
         'id',
         'name',
@@ -23,9 +19,10 @@ class Product extends Model
         'waitTime'
     ];
 
-    public function orders()
-    {
+    public function orders(){
       return $this->belongsToMany('App\Order', 'orders_products')->withPivot('quantify');
     }
+
+    
     
 }

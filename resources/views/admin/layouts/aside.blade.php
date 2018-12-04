@@ -52,6 +52,12 @@
           </a>
           </li>
           <li>
+            {{-- <a href="http://polleriatony.herokuapp.com/admin/users"></a> --}}
+            <a href="products">
+              <i class="fa fa-table"></i><span>Productos</span>
+            </a>
+          </li>
+          <li>
       {{-- <a href="http://polleriatony.herokuapp.com/admin/users">  --}}
        <a href="orders">
        <i class="fa fa-user"></i> <span>Pedidos</span>

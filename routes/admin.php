@@ -36,4 +36,7 @@ Route::middleware(['route','admin'])->group(function () {
 		Route::post('tables/{id}/destroyValidation', 'TableController@destroyValidation');
 		Route::post('tables/{id}/destroy', 'TableController@destroy');
 
+		//Ruta Productos
+		Route::get('products','ProductController@index');
+
 });
