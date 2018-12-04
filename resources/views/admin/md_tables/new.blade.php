@@ -13,7 +13,7 @@
                       </div>
                       <div class="form-group col-sm-6">
                         <label for="inputCapacityTable" class="control-label">Capacidad <i class="ti ti-help-alt" title="Este campo hace referencia a la cantidad de sillas que tiene la mesa" data-toggle="tooltip"></i></label>
-                        <input name="level" type="number" placeholder="Cantidad de sillas" min="1" max="5" class="form-control" id="inputCapacityTable" required>
+                        <input name="level" type="number" placeholder="Cantidad de sillas" min="1" max="20" class="form-control" id="inputCapacityTable" required>
                         <div class="help-block with-errors"></div>
                       </div>
                 </div>

@@ -15,7 +15,7 @@ class Table extends Model
     ];
 
     public function orders(){
-        return $this->hasMany("App\Table","table_id");
+        return $this->hasMany("App\Order","table_id");
     }
     
     public function getState(){

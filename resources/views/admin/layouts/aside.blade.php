@@ -40,11 +40,27 @@
              {{-- <a href="http://polleriatony.herokuapp.com/admin/users">  --}}
               <a href="users">
               <i class="fa fa-user"></i> <span>Usuarios</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green">new</small>
-              </span>
             </a>
         </li>
+        <li>
+          {{-- <a href="http://polleriatony.herokuapp.com/admin/users">  --}}
+           <a href="tables">
+           <i class="fa fa-table"></i> <span>Mesas</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+          </li>
+          <li>
+      {{-- <a href="http://polleriatony.herokuapp.com/admin/users">  --}}
+       <a href="orders">
+       <i class="fa fa-user"></i> <span>Pedidos</span>
+       <span class="pull-right-container">
+         <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+      </li>
+
           {{-- 
           <li class="treeview">
             <a href="#">

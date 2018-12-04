@@ -22,9 +22,9 @@ class CreateOrdersTable extends Migration
             $table->integer('totalPrice')->nullable();
             $table->date('date')->nullable(); //Fecha en que se realiza el pedido
             $table->integer("worker_id")->unsigned();
-            $table->foreign("worker_id")->references('id')->on("workers");
+            $table->foreign("worker_id")->references('id')->on("workers")->onDelete('cascade');
             $table->integer("table_id")->unsigned();
-            $table->foreign("table_id")->references('id')->on("tables");
+            $table->foreign("table_id")->references('id')->on("tables")->onDelete('cascade');
 
 
 

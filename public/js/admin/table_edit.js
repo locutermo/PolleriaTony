@@ -1,5 +1,5 @@
 $(document).ready(function() {
- $("#btnEditarStand").on('click',function(event) {
+ $("#btnEditarMesa").on('click',function(event) {
    //Verificar que los datos obligatorios no sean vacíos
    var editNumberTable = $('#editNumberTable').val();
    var editCapacityTable = $('#editCapacityTable').val();

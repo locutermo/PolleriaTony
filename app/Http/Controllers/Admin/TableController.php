@@ -120,32 +120,24 @@ class TableController extends Controller
                 $orders = $orders->whereIn('state',1);
                 if($orders->isNotEmpty()){
                   $order = $orders->first();
-                  $txt = $txt."\Pedido: ".($i+1)."\nEmpleado : ".$order->worker->name;
-                  $txt = $txt."\nMesa : ".$order->table->number;
-                  $txt = $txt."\nEstado : ".$order->getState();
-                $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido pendiente asignado: ".$txt);
+                  $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido pendiente asignado");
                 return json_encode($obj);
                 }
               //Caso 2 donde tiene pedido activo
                 $orders = $orders->whereIn('state',2);
                 if($orders->isNotEmpty()){
                   $order = $orders->first();
-                  $txt = $txt."\Pedido: ".($i+1)."\nEmpleado : ".$order->worker->name;
-                  $txt = $txt."\nMesa : ".$order->table->number;
-                  $txt = $txt."\nEstado : ".$order->getState();
-                $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido activo asignado: ".$txt);
+                  $obj = (object) array('caso' => 2, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido activo asignado ");
                 return json_encode($obj);
                 }
             }
 
             //En caso no ocurra ninguno de los casos anteriores
-            $obj = (object) array('caso' => '0', 'titulo' => '¿Estás Seguro(a)?' ,'texto' => 'Se eliminará el Table '.$table->name.'!. de Tipo : '.$table->type);
+            $obj = (object) array('caso' => '0', 'titulo' => '¿Estás Seguro(a)?' ,'texto' => 'Se eliminará la mesa nº '.$table->number.' !');
             $table->delete();
             return json_encode($obj);
       }
 
-      //Funcion que valida que el table no contenga registros
-      //La primera vez que el admin pulsa el boton de eliminar llama a esta por ajax
       public function destroyValidation($id)
       {
         $table = Table::find($id);
@@ -154,24 +146,24 @@ class TableController extends Controller
             //Caso 1 donde tiene pedido pendiente
             $orders = $orders->where('state',1);
             if($orders->isNotEmpty()){
-              $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido pendiente asignado");
-              return json_encode($obj);
+              $order = $orders->first();
+            $obj = (object) array('caso' => 1, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido pendiente asignado");
+            return json_encode($obj);
             }
           //Caso 2 donde tiene pedido activo
             $orders = $orders->where('state',2);
             if($orders->isNotEmpty()){
-              $obj = (object) array('caso' => 2, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido activo asignado ");
-              return json_encode($obj);
+              $order = $orders->first();
+            $obj = (object) array('caso' => 2, 'titulo' => 'Operación no Procede !!' ,'texto' => "Por regla general, la mesa nº ".$table->number." no puede ser eliminado porque contiene un pedido activo asignado ");
+            return json_encode($obj);
             }
         }
 
         //En caso no ocurra ninguno de los casos anteriores
-        $obj = (object) array('caso' => '0', 'titulo' => '¿Estás Seguro(a)?' ,'texto' => 'Se eliminará el Table '.$table->name.'!. de Tipo : '.$table->type);
-        $table->delete();
+        $obj = (object) array('caso' => '0', 'titulo' => '¿Estás Seguro(a)?' ,'texto' => 'Se eliminará la mesa nº '.$table->number);
         return json_encode($obj);
         }
-
-      //Agregar esta funcion a una clase abstracta
+        
       public function cambiaCadena($str){return intval(preg_replace('/[^0-9]+/', '', $str), 10);}
 
 

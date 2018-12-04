@@ -97,9 +97,6 @@ class OrderController extends Controller
         $products = $order->products();
         $order->products()->detach();
         
-        
-
-    
         foreach ($request->products as $i => $product) {
             //Disminuyendo la cantidad a cada producto
             $p = Product::find($product['id']);

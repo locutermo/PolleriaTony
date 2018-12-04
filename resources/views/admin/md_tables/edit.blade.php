@@ -16,7 +16,7 @@
                       </div>
                       <div class="form-group col-sm-6">
                         <label for="editCapacityTable" class="control-label">Capacidad</label>
-                        <input name="level" type="number" min="0" max="3" class="form-control" id="editCapacityTable" value="{{ $table->capacity }}" placeholder="Total de sillas " required>
+                        <input name="level" type="number" min="1" max="20" class="form-control" id="editCapacityTable" value="{{ $table->capacity }}" placeholder="Total de sillas " required>
                         <div class="help-block with-errors"></div>
                       </div>
                  </div>
@@ -42,6 +42,7 @@
 <script>
   $(document).ready(function() {
       $('.selectEdit').select2();
+      updateTable();
   });
 </script>
-<script src="{{ asset('js/admin/table_edit.js') }}"></script>
+
