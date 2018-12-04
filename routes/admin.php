@@ -38,5 +38,6 @@ Route::middleware(['route','admin'])->group(function () {
 
 		//Ruta Productos
 		Route::get('products','ProductController@index');
+		Route::post('producs/add','ProductController@add');
 
 });
