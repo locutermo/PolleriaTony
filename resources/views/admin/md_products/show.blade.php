@@ -13,7 +13,7 @@
             <th class="text-center">Stock</th>
             <th class="text-center">Descripcion</th>
             <th class="text-center">Imagen</th>
-            <th class="text-center">T. Espera (m)</th>
+            <th class="text-center">T. Espera (minutos)</th>
             <th class="text-center">Accion</th>
 		</tr>
 		</thead>
@@ -28,11 +28,11 @@
                 @if (is_null($product->image))
                 <td class="text-center">---</td>
                 @else
-                <td><img src="{{$product->image}}" alt="{{$product->name}}" style="width:auto;height:auto;"></td>
+                <td class="text-center"><img src="{{ asset('imgProductos/'.$product->image) }}" alt="{{$product->name}}" style="width:33%;height:auto;"></td>
                 @endif
                 <td class="text-center">{{$product->waitTime}}</td>
 				<td class="text-center">
-					<button type="button" data-toggle="modal" data-target="#create-order-modal"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editorder" data-id="{{$product->id}}" ><i class="fa fa-pencil"></i></button>
+					<button type="button" data-toggle="modal" data-target="#create-product-modal"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editProduct" data-id="{{$product->id}}" ><i class="fa fa-pencil"></i></button>
 					<button type="button" class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteProduct" data-id="{{$product->id}}" ><i class="fa fa-trash"></i></button>
 				</td>
 			</tr>

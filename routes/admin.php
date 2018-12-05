@@ -44,8 +44,9 @@ Route::middleware(['route','admin'])->group(function () {
 
 		//Ruta Productos
 		Route::get('products','ProductController@index');
+		Route::get('products/{id}/edit','ProductController@edit');
 		Route::post('products/{id}/destroyValidation','ProductController@destroyValidation');
 		Route::post('products/{id}/destroy','ProductController@destroy');
 		Route::post('products/store','ProductController@store');
-
+		Route::post('products/update','ProductController@update');
 });
