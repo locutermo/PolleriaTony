@@ -36,7 +36,7 @@ function createProduct(){
                 url: 'products/store',
                 type: 'post',
                 data: formDataP,
-                proccessData: false,
+                processData: false,
                 contentType: false,
                 success: function(response){
                     console.log(response);
@@ -48,7 +48,9 @@ function createProduct(){
                         console.log("Producto ya registrado.");
                         location.reload();
                     });
-                },
+                },error: function(response){
+                    console.log(response);
+                }
             });
         } else {
             swal({
