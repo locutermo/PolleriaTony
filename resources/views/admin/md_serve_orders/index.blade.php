@@ -18,79 +18,8 @@
  
         <input type="hidden" id="token" value="{{csrf_token()}}">
               <div class="row">
-                  <div class="col-md-4">
-                    <div class="box box-primary">
-                      <div class="box-header with-border">
-                        <h3 class="box-title">Productos del pedido actual</h3>
-          
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                          </button>
-                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body">
-                        <ul class="products-list product-list-in-box">
-                          <li class="item">
-                            <div class="product-img">
-                              <img src="{{ asset('img/avatar.png') }}" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">Samsung TV
-                                <span class="label label-warning pull-right">$1800</span></a>
-                              <span class="product-description">
-                                    Samsung 32" 1080p 60Hz LED Smart HDTV.
-                                  </span>
-                            </div>
-                          </li>
-                          <!-- /.item -->
-                          <li class="item">
-                            <div class="product-img">
-                              <img src="{{ asset('img/avatar.png') }}" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">Bicycle
-                                <span class="label label-info pull-right">$700</span></a>
-                              <span class="product-description">
-                                    26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                                  </span>
-                            </div>
-                          </li>
-                          <!-- /.item -->
-                          <li class="item">
-                            <div class="product-img">
-                              <img src="{{ asset('img/avatar.png') }}" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                              <span class="product-description">
-                                    Xbox One Console Bundle with Halo Master Chief Collection.
-                                  </span>
-                            </div>
-                          </li>
-                          <!-- /.item -->
-                          <li class="item">
-                            <div class="product-img">
-                              <img src="{{ asset('img/avatar.png') }}" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                <span class="label label-success pull-right">$399</span></a>
-                              <span class="product-description">
-                                    PlayStation 4 500GB Console (PS4)
-                                  </span>
-                            </div>
-                          </li>
-                          <!-- /.item -->
-                        </ul>
-                      </div>
-                      <!-- /.box-body -->
-                      <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All Products</a>
-                      </div>
-                      <!-- /.box-footer -->
-                    </div>
+                  <div class="col-md-4 div-information-order">
+                      {!! $info !!}
                   </div>
                   <div class="col-md-8">
                     <div class="box box-info">
@@ -109,69 +38,52 @@
                           <table class="table no-margin">
                             <thead>
                             <tr>
-                              <th>Order ID</th>
-                              <th>Item</th>
-                              <th>Status</th>
-                              <th>Popularity</th>
+                              <th>#</th>
+                              <th>Pedido</th>
+                              <th>Monto total </th>
+                              <th>Cantidad</th>
+                              <th>Observación</th>
+                              <th>Estado</th>
+                              <th>Acción</th>
+                              
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                              <td>Call of Duty IV</td>
-                              <td><span class="label label-success">Shipped</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                              <td>Samsung Smart TV</td>
-                              <td><span class="label label-warning">Pending</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                              <td>iPhone 6 Plus</td>
-                              <td><span class="label label-danger">Delivered</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                              <td>Samsung Smart TV</td>
-                              <td><span class="label label-info">Processing</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#00c0ef" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                              <td>Samsung Smart TV</td>
-                              <td><span class="label label-warning">Pending</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                              <td>iPhone 6 Plus</td>
-                              <td><span class="label label-danger">Delivered</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                              <td>Call of Duty IV</td>
-                              <td><span class="label label-success">Shipped</span></td>
-                              <td>
-                                <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                              </td>
-                            </tr>
+                              @foreach ($orders as  $i =>$order)
+                               @if ($order->state!=3)
+                               <tr>
+                                  <td>{{$i+1}}</td>
+                                  <td><a href="#" data-id="{{$order->id}}">{{$order->table->number}}MP{{$order->id}}</a></td>
+                                  <td>
+                                    S/.{{$order->totalPrice}},00
+                                  </td>
+                                  <td class="text-left">
+                                      {{$order->products->count()}} @if($order->products->count()>1) Productos @else  Producto @endif
+                                  </td>
+                                  <td>
+                                   @if($order->observation!=null) {{$order->observation}} @else No tiene observación @endif
+                                  </td>
+                                  <td>
+                                    @if ($order->state==1)
+                                      <span class="label label-info">{{$order->getState()}}</span>
+                                      @elseif($order->state==2)
+                                        <span class="label label-danger">{{$order->getState()}}</span>
+                                    @endif 
+                                  </td>
+                                  <td>
+                                    {{-- <button class="btn btn-info">Aceptar</button> --}}
+                                  @if ($order->state==2)
+                                  <a data-id="{{$order->id}}" class="btn btn-social-icon btn-linkedin aceptarPedido"><i class="fa fa-eye"></i></a>  
+                                  @endif
+                                    
+                                  @if($order->state==1) 
+                                    <a data-id="{{$order->id}}" class="btn btn-social-icon btn-linkedin aceptarPedido"><i class="fa fa-check"></i></a>  
+                                    {{-- <a data-id="{{$order->id}}" class="btn btn-social-icon btn-google rechazarPedido"><i class="fa fa-close"></i></a> --}}
+                                  @endif
+                                  </td>
+                                </tr>   
+                               @endif 
+                              @endforeach
                             </tbody>
                           </table>
                         </div>
@@ -179,8 +91,8 @@
                       </div>
                       <!-- /.box-body -->
                       <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                        {{-- <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a> --}}
                       </div>
                       <!-- /.box-footer -->
                     </div>
