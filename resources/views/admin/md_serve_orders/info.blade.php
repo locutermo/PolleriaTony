@@ -16,7 +16,7 @@
                     @foreach ($order->products as $product)
                     <li class="item">
                         <div class="product-img">
-                            <img src="{{ asset('img/avatar.png') }}" alt="Product Image">
+                            <img src="{{ asset('imgProductos/'.$product->image) }}" alt="Product Image">
                         </div>
                         <div class="product-info">
                             <a href="javascript:void(0)" class="product-title">{{$product->name}} - {{$product->pivot->quantify}} @if($product->pivot->quantify>1) unidades @else unidad @endif  
