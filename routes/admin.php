@@ -24,6 +24,9 @@ Route::middleware(['route','admin'])->group(function () {
 		Route::post('orders/product','OrderController@product');
 		Route::post('orders/update', 'OrderController@update');
 
+		Route::get('serveOrder','ServeOrderController@index');
+
+
 
 
 
