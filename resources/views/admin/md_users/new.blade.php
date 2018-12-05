@@ -5,7 +5,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Registrar Usuario</h4> </div>
+                    <h4 class="modal-title">Registrar Usuario</h4> 
+                </div>
                 <div class="modal-body">
                   <form data-toggle="validator" id="formNewUser" action="#" enctype="multipart/form-data" files="true">
 

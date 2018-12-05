@@ -23,7 +23,7 @@
                     <input type="hidden" id="token" value="{{csrf_token()}}">
                           <div class="row">
                               <div class="col-md-12">
-                                <!--{!! $new !!}-->
+                                {!! $new !!}
                               </div>
                               <div class="div-edit">
               

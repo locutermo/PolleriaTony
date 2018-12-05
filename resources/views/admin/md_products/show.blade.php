@@ -4,7 +4,7 @@
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
-	  <table class="table-export-pdf table-orders table table-striped">
+	  <table class="table-export-pdf table-products table table-striped">
 		<thead>
 		<tr>
 		    <th class="text-center">ID</th>
@@ -33,7 +33,7 @@
                 <td class="text-center">{{$product->waitTime}}</td>
 				<td class="text-center">
 					<button type="button" data-toggle="modal" data-target="#create-order-modal"   class="btn btn-info btn-outline btn-circle btn-sm m-r-5 editorder" data-id="{{$product->id}}" ><i class="fa fa-pencil"></i></button>
-					<button type="button"   class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteorder" data-id="{{$product->id}}" ><i class="fa fa-trash"></i></button>
+					<button type="button" class="btn btn-danger btn-outline btn-circle btn-sm m-r-5 deleteProduct" data-id="{{$product->id}}" ><i class="fa fa-trash"></i></button>
 				</td>
 			</tr>
 		@endforeach
