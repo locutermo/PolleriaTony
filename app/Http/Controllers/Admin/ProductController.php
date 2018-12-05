@@ -41,17 +41,17 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-       // $urlImgName = ($request->file('urlImgProduct')!=null)?time().$request->file('urlImgProduct')->getClientOriginalName():null;
+       $urlImgName = ($request->file('urlImgProduct')!=null)?time().$request->file('urlImgProduct')->getClientOriginalName():null;
         Product::create([
             'name' => $request->name,
             'stock' => $request->stock,
             'description' => $request->description,
             'price' => $request->price,
-            //'imagen' => $urlImgName,
+            'imagen' => $urlImgName,
             'waitTime' => $request->waitTime,
         ]);
 
-        //if($urlImgName != null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImgProduct')));
+        if($urlImgName != null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImgProduct')));
     
         return "1";
     }

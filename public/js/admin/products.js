@@ -62,6 +62,7 @@ function createProduct(){
 }
 
 function getDataP(formDataP){
+    formDataP.append('_token',$('#token').val());
     formDataP.append('name',$('#inputNameProduct').val());
     formDataP.append('price',$('#inputPriceProduct').val());
     formDataP.append('stock',$('#inputStockProduct').val());
