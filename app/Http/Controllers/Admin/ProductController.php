@@ -47,13 +47,42 @@ class ProductController extends Controller
             'stock' => $request->stock,
             'description' => $request->description,
             'price' => $request->price,
-            'imagen' => $urlImgName,
+            'image' => $urlImgName,
             'waitTime' => $request->waitTime,
         ]);
 
-        if($urlImgName != null) \Storage::disk('localUser')->put($urlImgName, \File::get($request->file('urlImgProduct')));
+        if($urlImgName != null) \Storage::disk('localProduct')->put($urlImgName, \File::get($request->file('urlImgProduct')));
     
         return "1";
+    }
+
+    public function edit($id){
+        $product = Product::find($id);
+        return view('admin.md_products.edit',[
+            'product' => $product,
+        ]);
+    }
+
+    public function update(Request $request){
+        $urlImgName = ($request->file('urlImgProduct')!=null)?time().$request->file('urlImgProduct')->getClientOriginalName():null;
+        $product = Product::find($request->id);
+        $productEdit = $product;
+        $productEdit->name = $request->name;
+        $productEdit->stock = $request->stock;
+        $productEdit->description = $request->description;
+        $productEdit->price = $request->price;
+        $productEdit->waitTime = $request->waitTime;
+        if($urlImgName != null){
+            $productEdit->image = $urlImgName;
+        }
+
+        $productEdit->save();
+
+        //Si la imagen con mismo nombre existe, la actualiza
+        if($urlImgName!=null) \Storage::disk('localProduct')->put($urlImgName, \File::get($request->file('urlImgP')));
+
+        return "0";
+
     }
 
     public function destroy($id){
