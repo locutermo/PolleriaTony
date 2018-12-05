@@ -36,7 +36,7 @@ function createProduct(){
                 url: 'products/store',
                 type: 'post',
                 data: formDataP,
-                proccessData: false,
+                processData: false,
                 contentType: false,
                 success: function(response){
                     console.log(response);
@@ -48,7 +48,9 @@ function createProduct(){
                         console.log("Producto ya registrado.");
                         location.reload();
                     });
-                },
+                },error: function(response){
+                    console.log(response);
+                }
             });
         } else {
             swal({
@@ -62,6 +64,7 @@ function createProduct(){
 }
 
 function getDataP(formDataP){
+    formDataP.append('_token',$('#token').val());
     formDataP.append('name',$('#inputNameProduct').val());
     formDataP.append('price',$('#inputPriceProduct').val());
     formDataP.append('stock',$('#inputStockProduct').val());
