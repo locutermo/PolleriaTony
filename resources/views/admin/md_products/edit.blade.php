@@ -53,15 +53,14 @@
                                     <div class="row">
                                         <div class="form-group col-sm-12">
                                             <label for="urlEditImgProduct" class="control-label">Foto</label>
-                                            <input type="file" name="urlEditImgProduct" data-height="200" value="{{ $product->image }}" data-default-file="{{ asset('imgProductos/'.$product->image) }}" id="urlImgProduct" class="dropify" data-allowed-file-extensions="png jpg" /> </div>
+                                            <input type="file" name="urlEditImgProduct" data-height="200" value="{{ $product->image }}" data-default-file="{{ asset('imgProductos/'.$product->image) }}" id="urlImgEditP" class="dropify" data-allowed-file-extensions="png jpg" /> </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="form-group col-sm-12" style="text-align:center;">
-                                        <button id="btnEditarProducto" type="button" class="fcbtn btn btn-outline btn-primary btn-1e"> <i class="fa fa-save"></i> <span>Editar</span></button>
-                                        {{-- <button id="btnCrearProducto" type="button" class="fcbtn btn btn-outline btn-primary btn-1e"> <i class="fa fa-envelope-o m-r-5"></i> <span >Editar</span> <span id="percentage"> 0% </span></button> --}}
+                                        <button id="btnEditarProducto" data-id="{{$product->id}}" type="button" class="fcbtn btn btn-outline btn-primary btn-1e"> <i class="fa fa-save"></i> <span>Editar</span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +79,7 @@
       <script type="text/javascript">
           (function () {
                   initDropify();
-                  editUser();
+                  editProduct();
           })();
       </script>
 

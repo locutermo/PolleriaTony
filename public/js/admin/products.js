@@ -122,6 +122,8 @@ function deleteProduct(){
                                     console.log("Producto Eliminado");
                                     location.reload();
                                 });
+                            },error:function(response){
+                            console.log(response);
                             }
                         })
                     } else {
@@ -137,14 +139,15 @@ function editProduct(){
     $(document).on('click',"#btnEditarProducto  ",function(event){
         if(true){
             var formData = new FormData('#formEditProduct');
-            $id = $(this).data('id');
+            var id = $(this).data('id');
+            formData.append('id',id);
             formData.append('_token',$('#token').val());
             getDataEditP(formData);
             $.ajax({
                 url: 'products/update',
                 type: 'post',
                 data: formData,
-                proccessData: false,
+                processData: false,
                 contentType: false,
                 success: function(e){
                     swal({
@@ -183,9 +186,8 @@ function getDataP(formDataP){
 }
 
 function getDataEditP(formData){
-    formData.append('id',$id);
     formData.append('name',$('#inputEditNameProduct').val());
-    formData.append('price',$('#inputEditPricePProduct').val());
+    formData.append('price',$('#inputEditPriceProduct').val());
     formData.append('stock',$('#inputEditStockProduct').val());
     formData.append('waitTime',$('#inputEditWaitTime').val());
     formData.append('description',$('#inputEditDescription').val());

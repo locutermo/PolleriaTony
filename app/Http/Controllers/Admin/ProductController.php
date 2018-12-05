@@ -64,9 +64,8 @@ class ProductController extends Controller
     }
 
     public function update(Request $request){
-        $urlImgName = ($request->file('urlImgProduct')!=null)?time().$request->file('urlImgProduct')->getClientOriginalName():null;
-        $product = Product::find($request->id);
-        $productEdit = $product;
+        $urlImgName = ($request->file('urlImgEditP')!=null)?time().$request->file('urlImgEditP')->getClientOriginalName():null;
+        $productEdit = Product::find($request->id);
         $productEdit->name = $request->name;
         $productEdit->stock = $request->stock;
         $productEdit->description = $request->description;
@@ -76,10 +75,11 @@ class ProductController extends Controller
             $productEdit->image = $urlImgName;
         }
 
+
         $productEdit->save();
 
         //Si la imagen con mismo nombre existe, la actualiza
-        if($urlImgName!=null) \Storage::disk('localProduct')->put($urlImgName, \File::get($request->file('urlImgP')));
+        if($urlImgName!=null) \Storage::disk('localProduct')->put($urlImgName, \File::get($request->file('urlImgEditP')));
 
         return "0";
 
@@ -87,14 +87,14 @@ class ProductController extends Controller
 
     public function destroy($id){
         $product = Product::find($id);
-        $object = (object) array('caso' => '0', 'titulo' => '¿Estás Seguro(a)?', 'texto' => 'Se eliminará  el producto '.$product->name.'!');
+        $object = (object) array('caso' =>0 , 'titulo' => 'Operación Exitosa!!', 'texto' => 'Se eliminó el producto '.$product->name.' correctamente !');
         $product->delete();
-        return json_encode($obj);
+        return json_encode($object);
     }
 
     public function destroyValidation($id){
         $product = Product::find($id);
-        $obj = (object) array('caso' => '0', 'titulo' => '¿Estás Seguro(a)?', 'texto' => 'Se eliminara el producto '.$product->name.'!');
+        $obj = (object) array('titulo' => '¿Estás Seguro(a)?', 'texto' => 'Se eliminara el producto '.$product->name.'!');
         return json_encode($obj);
     }
 }
